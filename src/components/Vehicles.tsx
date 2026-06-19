@@ -25,8 +25,7 @@ const VEHICLES: Vehicle[] = [
       'Klima ve Konfor Paketleri',
       'Şoförlü Hizmet',
     ],
-    waMessage:
-      'Merhaba VIP Transfer, Mercedes Transporter VIP hakkında detaylı bilgi almak istiyorum.',
+    waMessage: 'Merhaba VIP Transfer, Mercedes Transporter VIP hakkında detaylı bilgi almak istiyorum.',
   },
   {
     title: 'Ford Courier',
@@ -39,16 +38,12 @@ const VEHICLES: Vehicle[] = [
       'Şoförlü veya Şoförsüz Kiralama',
       'Günlük ve Uzun Dönem Kiralama',
     ],
-    waMessage:
-      'Merhaba VIP Transfer, Ford Courier kiralama hakkında detaylı bilgi almak istiyorum.',
+    waMessage: 'Merhaba VIP Transfer, Ford Courier kiralama hakkında detaylı bilgi almak istiyorum.',
   },
 ];
 
-function Placeholder({ title }: { title: string; accent: string }) {
-  // Gelen araç adına göre tam senin koyduğun isimlerle eşleştiriyoruz
-  const imageSrc = title.includes("Mercedes") 
-    ? "/a1.png" 
-    : "/a2.png";
+function Placeholder({ title }: { title: string; accent: 'gold' | 'silver' }) {
+  const imageSrc = title.includes('Mercedes') ? '/a1.png' : '/a2.png';
 
   return (
     <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-gold-500/20">
@@ -60,75 +55,60 @@ function Placeholder({ title }: { title: string; accent: string }) {
     </div>
   );
 }
-}
 
-function VehicleCard({ vehicle, delay }: { vehicle: Vehicle; delay: number }) {
-  const isGold = vehicle.accent === 'gold';
+export default function Vehicles() {
   return (
-    <Reveal as="article" delay={delay} className="card-luxury group p-4 sm:p-5">
-      {/* Badge */}
-      <div className="absolute right-5 top-5 z-10">
-        <span
-          className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] backdrop-blur ${
-            isGold
-              ? 'border-gold-500/50 bg-gold-500/10 text-gold-300'
-              : 'border-gray-400/40 bg-gray-400/10 text-gray-200'
-          }`}
-        >
-          {vehicle.badge}
-        </span>
-      </div>
+    <section id="vehicles" className="py-20 bg-noir-900 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionTitle
+          title="Lüks Araç Filomuz"
+          subtitle="Her ihtiyaca ve bütçeye uygun, son model konforlu araçlarımızla hizmetinizdeyiz."
+        />
 
-      <Placeholder title={vehicle.title} accent={vehicle.accent} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mt-12">
+          {VEHICLES.map((vehicle, index) => (
+            <Reveal key={index} delay={index * 0.2}>
+              <div className="bg-noir-950/40 backdrop-blur-md rounded-3xl border border-gold-500/10 overflow-hidden hover:border-gold-500/30 transition-all duration-500 group flex flex-col h-full">
+                <Placeholder title={vehicle.title} accent={vehicle.accent} />
 
-      <div className="px-2 pt-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold-400">
-          {vehicle.subtitle}
-        </p>
-        <h3 className="mt-1 font-display text-2xl font-bold text-white">
-          {vehicle.title}
-        </h3>
+                <div className="p-6 lg:p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 ${
+                        vehicle.accent === 'gold' 
+                          ? 'bg-gold-500/10 text-gold-400 border border-gold-500/20' 
+                          : 'bg-white/5 text-gray-400 border border-white/10'
+                      }`}>
+                        {vehicle.badge}
+                      </span>
+                      <h3 className="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors duration-300">
+                        {vehicle.title}
+                      </h3>
+                      <p className="text-sm text-gray-400 mt-1">{vehicle.subtitle}</p>
+                    </div>
+                  </div>
 
-        <ul className="mt-5 space-y-3">
-          {vehicle.features.map((f) => (
-            <li key={f} className="flex items-center gap-3 text-sm text-gray-300">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-gold-500/30 bg-gold-500/5 text-gold-400">
-                <Check className="h-3.5 w-3.5" />
-              </span>
-              {f}
-            </li>
-          ))}
-        </ul>
+                  <ul className="space-y-3 my-6 flex-grow">
+                    {vehicle.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-300 text-sm lg:text-base">
+                        <Check className="w-5 h-5 text-gold-500 mr-3 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-        {/* feature icons */}
-        <div className="mt-5 flex items-center gap-4 border-t border-gold-500/10 pt-4 text-gold-400/70">
-          <Users className="h-4 w-4" />
-          <Wind className="h-4 w-4" />
-          <Fuel className="h-4 w-4" />
-        </div>
-
-        <a
-          href={waLink(vehicle.waMessage)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-gold-500/40 bg-transparent py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-200 transition-all duration-500 hover:bg-gold-500 hover:text-noir-950 hover:shadow-gold-soft"
-        >
-          Detaylar
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </a>
-      </div>
-    </Reveal>
-  );
-}
-
-export function Vehicles() {
-  return (
-    <section id="vehicles" className="relative py-24 sm:py-28">
-      <div className="lux-container">
-        <SectionTitle eyebrow="Filo" title="Araçlarımız" />
-        <div className="mt-14 grid gap-7 md:grid-cols-2">
-          {VEHICLES.map((v, i) => (
-            <VehicleCard key={v.title} vehicle={v} delay={i * 150} />
+                  <a
+                    href={waLink(vehicle.waMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center px-6 py-4 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-noir-950 font-bold transition-all duration-300 shadow-lg shadow-gold-600/10 group/btn mt-auto"
+                  >
+                    <span>Detaylar ve Rezervasyon</span>
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
