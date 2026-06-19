@@ -109,26 +109,28 @@ export function Footer() {
                   QR Kod Alanı
                 </span>
               </div>
-              <a
-                href={waLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300 transition-all duration-500 hover:border-emerald-400 hover:bg-emerald-500/20 hover:shadow-gold-soft"
-              >
-                <MessageCircle className="h-4 w-4 transition-transform group-hover:scale-110" />
-                WhatsApp'tan Yazın
-              </a>
-            </div>
+               <a
+              href={waLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-emerald-400 transition-colors hover:bg-emerald-500/20"
+            >
+              <MessageCircle className="h-4 w-4 transition-transform group-hover:scale-110" />
+              WhatsApp&apos;tan Yazın
+            </a>
           </div>
         </div>
       </div>
-<div className="flex flex-col items-center justify-center my-6">
-  <p className="text-sm text-amber-500 mb-2">Hızlı İletişim için WhatsApp QR Kod</p>
-  <img src="/qr.png" alt="WhatsApp QR" className="w-32 h-32 rounded-lg border-2 border-amber-500" />
-</div>
-          © 2026 VIP Transfer. Tüm hakları saklıdır.
-        </p>
+
+      <div className="flex flex-col items-center justify-center my-6">
+        <p className="text-sm text-amber-500 mb-2">Hızlı İletişim için WhatsApp QR Kod</p>
+        <img src="/qr.png" alt="WhatsApp QR" className="w-32 h-32 rounded-lg border-2 border-amber-500" />
       </div>
-    </footer>
+
+      <p className="text-gray-500 text-sm text-center mt-8">
+        © 2026 VIP Transfer. Tüm hakları saklıdır.
+      </p>
+    </div>
+  </footer>
   );
 }

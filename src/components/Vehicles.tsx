@@ -1,4 +1,4 @@
-import { Crown, Fuel, Users, Wind, Check, ArrowRight, Car } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { waLink } from '../constants';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
