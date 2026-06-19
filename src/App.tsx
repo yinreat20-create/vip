@@ -1,7 +1,7 @@
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Reservation } from './components/Reservation';
-import { Vehicles } from './components/Vehicles';
+import Vehicles from './components/Vehicles';
 import { Services } from './components/Services';
 import { WhyUs } from './components/WhyUs';
 import { Footer } from './components/Footer';

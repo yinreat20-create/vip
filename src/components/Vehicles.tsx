@@ -55,7 +55,8 @@ function Placeholder({ title }: { title: string; accent: 'gold' | 'silver' }) {
   );
 }
 
-export default function Vehicles() {
+ // Dosyanın en altındaki satırı şu şekilde değiştir:
+export function Vehicles() { // 'default' kelimesini kaldırdık
   return (
     <section id="vehicles" className="py-20 bg-noir-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
