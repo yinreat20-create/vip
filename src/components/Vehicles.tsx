@@ -1,5 +1,4 @@
 import { Check, ArrowRight } from 'lucide-react';
-import { waLink } from '../constants';
 import { SectionTitle } from './SectionTitle';
 import { Reveal } from './Reveal';
 
@@ -98,7 +97,7 @@ export default function Vehicles() {
                   </ul>
 
                   <a
-                    href={waLink(vehicle.waMessage)}
+                    href="https://wa.me/905000000000"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center px-6 py-4 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-noir-950 font-bold transition-all duration-300 shadow-lg shadow-gold-600/10 group/btn mt-auto"
